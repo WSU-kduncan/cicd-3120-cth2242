@@ -1,0 +1,37 @@
+
+h2 {
+	text-align: center;
+}
+
+p:nth-of-type(2) {
+	text-align: center;
+}
+
+#image {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url("../images/page4/fire.jpg");
+	width: 300px;
+	height: 300px;
+	
+}
+
+#image:hover {
+	background-image: url("../images/page4/trophy.jpg");
+}
+
+video {
+	display: block;
+	padding-top: 15px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#imagemap {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+

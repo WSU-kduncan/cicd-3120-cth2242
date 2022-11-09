@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>    
+		<title>Volunteer Traditions</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/page1.css">
+		<link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Abhaya Libre'>
+		<link href="jquery/jquery-ui.min.css" rel="stylesheet">	
+		<script src="external/jquery/jquery.js"></script>
+		<script src="jquery/jquery-ui.min.js"></script>
+		<script src="http://malsup.github.com/jquery.cycle2.js"></script>
+		<script src="http://malsup.github.io/jquery.cycle2.center.js"></script>
+		
+	</head>  
+  
+  
+	<body>
+		<header>
+			<ul>
+				<li><a href = "index.html">
+				<img src="images/logo.jpg" alt="Logo" >
+				</a></li>
+				<li><h1>Volunteer Traditions</h1></li>
+			</ul>
+		</header>    
+	
+		<nav>
+			<ul>
+				<li id="current"><a href= "page1.html" target=_"blank"> Volunteer Traditions</a></li>
+				<li><a href= "page2.html" target=_"blank"> Famous Volunteers</a></li>
+				<li><a href= "page3.html" target=_"blank"> Neyland Stadium</a></li>
+				<li><a href= "page4.html" target=_"blank"> Team's Future</a></li>
+			</ul>
+		</nav>
+
+
+
+		<main> 
+			<h2>Pride of the Southland Marching Band</h2>
+			<div class= "image1" >
+			<img src="images/page1/band1.jpg" alt="Pride of the Southland"></div>
+			<figcaption>Tennesse's Marching Band during the 2016 Music City Bowl. Hover for transformation</figcaption>
+			<p>Tennessee's Marching Band, The Pride of the Southland, has been performing at halftime shows for over 110 years.
+			They are regarded as one of the top marching bands in the nation. The Pride of the Southland has played at every Presidential
+			Inguration (except 2013) since 1965.</p>
+			<h2> Rocky Top</h2>
+			<p> One of my favorite Volunteer traditions is singing Rocky Top. Rocky Top has been played by the school band since the early 1970s. While Rocky Top is not the offical Tennessee fight song (Down the Field remains the offical fight song), it is the most popular and iconic song associated with the Tennessee Volunteers.</p>
+			<div class = "audioplayer" >
+			<audio src= "media/rockytop.mp3" controls></audio></div>
+		
+			<h2> Rivalries</h2>
+			<p> Tennessee competes in the SEC. Since the SEC is home to some of the best teams in college football this has led to multiple fierce rivalries. Some of the most notable ones are shown in the slideshow below.</p>
+			<div class="cycle-slideshow" 
+				data-cycle-fx="scrollHorz"
+				data-cycle-timeout="3000"
+				data-cycle-center-horz=true
+				data-cycle-caption="#adv-custom-caption"
+				data-cycle-caption-template="{{cycleTitle}}">
+				<img src="images/page1/bama.png" data-cycle-title="Alabama Crimson Tide">
+				<img src="images/page1/bulldogs.png" data-cycle-title="Georgia Bulldogs"> 
+				<img src="images/page1/gators.png" data-cycle-title="Flordia Gators">
+				<img src="images/page1/tigers.png" data-cycle-title="Auburn Tigers">
+				<img src="images/page1/vandy.png" data-cycle-title="Vanderbilt Commadores">
+				<img src="images/page1/wildcats.png" data-cycle-title="Kentucky Wildcats">
+			<div id="adv-custom-caption"></div>
+		</div> 
+	
+		</main>    
+	
+		<footer>
+			Hulin - Project 2 - © Spring 2021
+		</footer>  
+	</body>
+  
+</html>
