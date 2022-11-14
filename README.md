@@ -6,6 +6,7 @@
 ### Project Overview
 
 ### Documentation
+
 - how you installed docker + dependencies (WSL2, for example)
 - how to build the container from the Dockerfile
 - how to run the container
