@@ -31,7 +31,9 @@ The purpose of this project is to get hands on experience with containerizing an
 
 ## DockerHub
 - Process to create public repo in DockerHub
-    - The first step is to sign into Dockerhub on your browser. Next you will click `Repositories` at the top of the page. Next you will click `Create repository` on the left side of the screen. This will bring you to a page where you will name your repo, give a description of the repo, and choose if you want it to be public or private. After filling out this information you will click `Create` at the bottom left of the screen. 
+    - The first step is to sign into Dockerhub on your browser. Next you will click `Repositories` at the top of the page. Next you will click `Create repository` on the left side of the screen. This will bring you to a page where you will name your repo, give a description of the repo, and choose if you want it to be public or private. After filling out this information you will click `Create` at the bottom right of the screen. 
+
+    ![How to create repo](images/createrepo.png)
 - How to authenticate with DockerHub via CLI using Dockerhub credentials
     - The best way to authenticate yourself via CLI is to use a Dockerhub Access Token. Access tokens provide better security than a normal password. Instead of using one password on multiple machines, you can create multiple tokens for multiple machines. This grants you better access control by allowing you to disable/delete tokens for the machines as needed. Machines that are signed in via access tokens will also prevent users from performing admin actions such changing passwords. 
     - The first step is to create a Dockerhub Access Token. You do this by going into your Account Settings and navigating to the security options. Select New Access Token in the Access Token section. Select a name for the access token and the permissions that the token will provide. After this you will be presented with your access token. You can only view this token once so make sure to save
@@ -46,14 +48,21 @@ The purpose of this project is to get hands on experience with containerizing an
 
 ## Github Action
 - Configuring GitHub Secrets
-  - What secrets were set based on what info
+  - To make my Github Action work I had to add two secrets to my repository. The first secret is called `DOCKER_HUB_USERNAME` and it is my Dockerhub ID. The other secret is called `DOCKER_HUB_ACCESS_TOKEN` and it is the access token I created in the last task. 
+  - I added these secrets by entering my repo's settings and selecting Secrets > Actions on the left side of the screen. You will then select New repository secret. You will enter a name for the secret and the secret's value then select Add secret.
+
 - Behavior of GitHub workflow
   - what does it do and when
+    - The workflow I created signs into my Dockerhub account, builds a container from the image in my Github repo, and pushes it to my Dockerhub repo. This action takes place every time I make a commit to the main branch of my Github repo.
+
+    ![Success of Github Action](images/successaction.png)
   - what variables in workflow are custom to your project
+    - There are three custom variables in my workflow. The first two are the Github secrets I had to create to sign into my Docker account. The last variable I had to create was I had change was the repo name to the Dockerhub repo. If others wanted to use my script this would be the only variable that they would have to change. 
 
 ### Sources Used
 [Github Documentation on Actions](https://docs.github.com/en/actions/quickstart)
 [Docker Documentation on Actions](https://docs.docker.com/build/ci/github-actions/)
+
 ## Deployment
 - Description of container restart script
 - Setting up a webhook on the server
