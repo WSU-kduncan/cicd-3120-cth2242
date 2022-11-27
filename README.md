@@ -51,6 +51,9 @@ The purpose of this project is to get hands on experience with containerizing an
   - what does it do and when
   - what variables in workflow are custom to your project
 
+### Sources Used
+[Github Documentation on Actions](https://docs.github.com/en/actions/quickstart)
+[Docker Documentation on Actions](https://docs.docker.com/build/ci/github-actions/)
 ## Deployment
 - Description of container restart script
 - Setting up a webhook on the server
