@@ -1,12 +1,13 @@
 # Project 5
 
 
-## Part 1 - Dockerize it
 
-### Project Overview
+
+## Project Overview
 The purpose of this project is to get hands on experience with containerizing an application with Docker, usign Github Actions to automate project pipelines, and using webhooks to keep my applications up to date. 
 
-### Documentation
+
+## Run Project Locally
 
 - How you installed docker + dependencies (WSL2, for example)
     - My PC already had WSL2 and the Linux kernel update installed
@@ -17,7 +18,7 @@ The purpose of this project is to get hands on experience with containerizing an
 - How to build the container from the Dockerfile
     - I built my container with `docker build . -t attempt1`
 - How to run the container
-    - I ran my container with `docker run -d --name thiswillwork -p 80:80 attempt1`
+    - I ran my container with `docker run -d --name project5 -p 80:80 attempt1`
     - I added I specified the port bind because even though my Dockerfile is supposed to expose port 80, I was unable to view my webpage. By adding `-p 80:80` I am able to view my website. 
 - How to view the project running in the container (open a browser...go to ip and port...)
     - I am able to view my project by going to 127.0.0.1 in my web browser.
@@ -28,8 +29,33 @@ The purpose of this project is to get hands on experience with containerizing an
 - [Creating my Dockerfile](https://docs.docker.com/engine/reference/builder/)
 - [Guide on creating an Apache Dockerfile](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-to-dockerize-Apache-httpd-web-servers)
 
-## Part 2 - GitHub Actions and DockerHub
+## DockerHub
+- Process to create public repo in DockerHub
+    - The first step is to sign into Dockerhub on your browser. Next you will click `Repositories` at the top of the page. Next you will click `Create repository` on the left side of the screen. This will bring you to a page where you will name your repo, give a description of the repo, and choose if you want it to be public or private. After filling out this information you will click `Create` at the bottom left of the screen. 
+- How to authenticate with DockerHub via CLI using Dockerhub credentials
+    - The best way to authenticate yourself via CLI is to use a Dockerhub Access Token. Access tokens provide better security than a normal password. Instead of using one password on multiple machines, you can create multiple tokens for multiple machines. This grants you better access control by allowing you to disable/delete tokens for the machines as needed. Machines that are signed in via access tokens will also prevent users from performing admin actions such changing passwords. 
+    - The first step is to create a Dockerhub Access Token. You do this by going into your Account Settings and navigating to the security options. Select New Access Token in the Access Token section. Select a name for the access token and the permissions that the token will provide. After this you will be presented with your access token. You can only view this token once so make sure to save
+    - The next step is to sign in on your command line. I did this by using `docker login -u cth2242`. You will then be prompted to provide a password. You will paste in the access token you got from Dockerhub.
+- How to push container to Dockerhub
+    - The first step is to name my local image using my Dockerhub username and the repo name. There are multiple ways to do this, I chose to do this by using `docker commit project5 cth2242/project5`. I did not specify a tag because I chose to use the default tag name of latest. 
+    - Finally I pushed the container to my Dockerhub repo by using `docker push cth2242/project5`. 
 
-## Part 3 - Deployment
+### Source Used
+- [Dockerhub Documentation on Access Token ](https://docs.docker.com/docker-hub/access-tokens/#create-an-access-token)
+- [Dockerhub Documentation on Repos](https://docs.docker.com/docker-hub/repos/)
 
-## Part 4 - Diagramming
+## Github Action
+- Configuring GitHub Secrets
+  - What secrets were set based on what info
+- Behavior of GitHub workflow
+  - what does it do and when
+  - what variables in workflow are custom to your project
+
+## Deployment
+- Description of container restart script
+- Setting up a webhook on the server
+  - How you created you own listener
+  - How you installed the [webhook on GitHub](https://github.com/adnanh/webhook)
+  - How to keep the webhook running if the instance is on
+- Description of Webhook task definition file
+- Steps to set up a notifier in GitHub or DockerHub
