@@ -60,14 +60,26 @@ The purpose of this project is to get hands on experience with containerizing an
     - There are three custom variables in my workflow. The first two are the Github secrets I had to create to sign into my Docker account. The last variable I had to create was I had change was the repo name to the Dockerhub repo. If others wanted to use my script this would be the only variable that they would have to change. 
 
 ### Sources Used
-[Github Documentation on Actions](https://docs.github.com/en/actions/quickstart)
-[Docker Documentation on Actions](https://docs.docker.com/build/ci/github-actions/)
+- [Github Documentation on Actions](https://docs.github.com/en/actions/quickstart)
+- [Docker Documentation on Actions](https://docs.docker.com/build/ci/github-actions/)
 
 ## Deployment
 - Description of container restart script
+  - The 
+- How I set up Docker on my Ubuntu instance
+  - The first step I took to install Docker was a `sudo apt update` and `sudo apt upgrade`
+  - I then ran `sudo apt install docker.io` to install Docker
+  - Next I ran `sudo snap install docker` to install Docker's dependencies. 
+  - I checked to make sure Docker was properly involved by using `sudo docker run hello-world` followed by `sudo docker images`
+  - I then tried to sign into my Docker account via command line with `sudo docker login -u cth2242` but was met with an error message.
+  - I fixed this by adding my Ubuntu user to the Docker group by using `sudo usermod -aG docker ubuntu`
 - Setting up a webhook on the server
   - How you created you own listener
   - How you installed the [webhook on GitHub](https://github.com/adnanh/webhook)
   - How to keep the webhook running if the instance is on
 - Description of Webhook task definition file
 - Steps to set up a notifier in GitHub or DockerHub
+
+### Sources Used
+- [Guide to Install Docker on Ubuntu](https://www.simplilearn.com/tutorials/docker-tutorial/how-to-install-docker-on-ubuntu)
+- [Guide I used to resolve my sign in error](https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket)
