@@ -75,7 +75,7 @@ The purpose of this project is to get hands on experience with containerizing an
 - Setting up a webhook on the server
   - How you created you own listener
   - How you installed the [webhook on GitHub](https://github.com/adnanh/webhook)
-    - I installed the webhook package by using `sudo apt-get install webhook`. I then checked to see if it was properly installed by using `sudo systemctl status webhook`. 
+    - `go install github.com/adnanh/webhook@latest`
   - How to keep the webhook running if the instance is on
 - Description of container restart script
   - The 
