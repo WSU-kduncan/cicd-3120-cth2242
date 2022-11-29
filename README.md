@@ -64,8 +64,7 @@ The purpose of this project is to get hands on experience with containerizing an
 - [Docker Documentation on Actions](https://docs.docker.com/build/ci/github-actions/)
 
 ## Deployment
-- Description of container restart script
-  - The 
+
 - How I set up Docker on my Ubuntu instance
   - The first step I took to install Docker was a `sudo apt update` and `sudo apt upgrade`
   - I then ran `sudo apt install docker.io` to install Docker
@@ -76,8 +75,12 @@ The purpose of this project is to get hands on experience with containerizing an
 - Setting up a webhook on the server
   - How you created you own listener
   - How you installed the [webhook on GitHub](https://github.com/adnanh/webhook)
+    - I installed the webhook package by using `sudo apt-get install webhook`. I then checked to see if it was properly installed by using `sudo systemctl status webhook`. 
   - How to keep the webhook running if the instance is on
+- Description of container restart script
+  - The 
 - Description of Webhook task definition file
+  - My webhook task definition file is fairly simple. I defined the name of the webhook with the `id` variable. I defined the script that the webhook is supposed to execute with `execute-command`. I then defined webhook's working directory with `command-working-directory`. I decided to use a yaml file instead of a json file because I prefer using yaml over json. 
 - Steps to set up a notifier in GitHub or DockerHub
 
 ### Sources Used
