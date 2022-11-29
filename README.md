@@ -74,16 +74,30 @@ The purpose of this project is to get hands on experience with containerizing an
   - I fixed this by adding my Ubuntu user to the Docker group by using `sudo usermod -aG docker ubuntu`
 - Setting up a webhook on the server
   - How you created you own listener
+    - I did not create a listener because webhook creates a listener on port 9000 when it is run. 
   - How you installed the [webhook on GitHub](https://github.com/adnanh/webhook)
-    - `go install github.com/adnanh/webhook@latest`
+    - First I grabbed go's tarball with `curl -OL https://golang.org/dl/go1.8.linux-amd64.tar.gz`
+    - I extracted the tarball with `sudo tar -C /usr/local -xzf go1.18.linux-amd64.tar.gz`
+    - I then added go to my PATH with `echo "export PATH=$PATH:/usr/local/go/bin" >> .profile`
+    - I finally installed webhooks with `go install github.com/adnanh/webhook@latest`
+
+    ![webhook working](images/webhook.png)
   - How to keep the webhook running if the instance is on
+    - First step is to `cd /etc/systemd/system` and create a systemd file with `sudo vim webhook.service`
+    - I then add the following information to the file
+    ![webhook.service](images/systemd.png)
+    -  I restarted systemd with `sudo systemctl daemon-reload` so that it would read my new file
+    - Finally I enabled my new service with `sudo systemctl enable webhook.service`
 - Description of container restart script
-  - The 
+  - The container restart script is fairly simple. The first step of the script is to stop the running container. It then removes the container that was running from my system. Next, it pulls the most latest image from my Docker hub repo. Finally, it creates with a new container from the pulled image. I have two `docker ps -a` and a `docker image` so that I can keep track of what is happening. 
 - Description of Webhook task definition file
-  - My webhook task definition file is fairly simple. I defined the name of the webhook with the `id` variable. I defined the script that the webhook is supposed to execute with `execute-command`. I then defined webhook's working directory with `command-working-directory`. I decided to use a yaml file instead of a json file because I prefer using yaml over json. 
+  - My webhook task definition file is fairly simple. I defined the name of the webhook with the `id` variable. I defined the script that the webhook is supposed to execute with `execute-command`. I then defined webhook's working directory with `command-working-directory`. 
 - Steps to set up a notifier in GitHub or DockerHub
+  - I set up my notifier in Dockerhub by going into my projects repo and selecting Webhooks. There I created my webhook by giving it a name and directing the HTTP call back at  http://54.162.164.210:9000/hooks/restart-webhook. 
 
 ### Sources Used
 - [Guide to Install Docker on Ubuntu](https://www.simplilearn.com/tutorials/docker-tutorial/how-to-install-docker-on-ubuntu)
 - [Guide I used to resolve my sign in error](https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket)
 - [Guide I used to fix the error I was getting when stop my container](https://stackoverflow.com/questions/47223280/docker-containers-can-not-be-stopped-or-removed-permission-denied-error)
+- [Guide I used to install Go](https://www.digitalocean.com/community/tutorials/how-to-install-go-on-ubuntu-20-04)
+- [Guide to create systemd service](https://linuxhandbook.com/create-systemd-services/)
