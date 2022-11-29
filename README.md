@@ -86,3 +86,4 @@ The purpose of this project is to get hands on experience with containerizing an
 ### Sources Used
 - [Guide to Install Docker on Ubuntu](https://www.simplilearn.com/tutorials/docker-tutorial/how-to-install-docker-on-ubuntu)
 - [Guide I used to resolve my sign in error](https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket)
+- [Guide I used to fix the error I was getting when stop my container](https://stackoverflow.com/questions/47223280/docker-containers-can-not-be-stopped-or-removed-permission-denied-error)
