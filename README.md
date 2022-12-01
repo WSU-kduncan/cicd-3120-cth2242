@@ -6,6 +6,7 @@
 ## Project Overview
 The purpose of this project is to get hands on experience with containerizing an application with Docker, usign Github Actions to automate project pipelines, and using webhooks to keep my applications up to date. 
 
+![i dont diagram so good](images/actiondiagram.png)
 
 ## Run Project Locally
 
@@ -90,6 +91,7 @@ The purpose of this project is to get hands on experience with containerizing an
     - Finally I enabled my new service with `sudo systemctl enable webhook.service`
 - Description of container restart script
   - The container restart script is fairly simple. The first step of the script is to stop the running container. It then removes the container that was running from my system. Next, it pulls the most latest image from my Docker hub repo. Finally, it creates with a new container from the pulled image. I have two `docker ps -a` and a `docker image` so that I can keep track of what is happening. 
+  - I ran into an issue with my script that prevented me from stopping and removing my running container. I did some research and figured out that AppArmor prevents containers from being stopped and removed. I disabled AppArmor with `sudo systemctl disable apparmor.service --now` followed by `sudo service apparmor teardown`. After doing this my script was able to stop and remove my running container.  
 - Description of Webhook task definition file
   - My webhook task definition file is fairly simple. I defined the name of the webhook with the `id` variable. I defined the script that the webhook is supposed to execute with `execute-command`. I then defined webhook's working directory with `command-working-directory`. 
 - Steps to set up a notifier in GitHub or DockerHub
@@ -101,3 +103,4 @@ The purpose of this project is to get hands on experience with containerizing an
 - [Guide I used to fix the error I was getting when stop my container](https://stackoverflow.com/questions/47223280/docker-containers-can-not-be-stopped-or-removed-permission-denied-error)
 - [Guide I used to install Go](https://www.digitalocean.com/community/tutorials/how-to-install-go-on-ubuntu-20-04)
 - [Guide to create systemd service](https://linuxhandbook.com/create-systemd-services/)
+- [Guide to fixing the AppArmor issue](https://forums.docker.com/t/can-not-stop-docker-container-permission-denied-error/41142/6)
